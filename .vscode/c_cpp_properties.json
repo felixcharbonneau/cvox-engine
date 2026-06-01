@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "name": "cvox",
+            "includePath": [
+                "${workspaceFolder}/cvox/include",
+                "${workspaceFolder}/build/_deps/entt-src/single_include"
+            ],
+            "intelliSenseMode": "/usr/bin/g++-14",
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c17",
+            "cppStandard": "c++23"
+        }
+    ],
+    "version": 4
+}
