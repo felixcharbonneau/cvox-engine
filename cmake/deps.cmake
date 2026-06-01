@@ -1,5 +1,7 @@
 include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/CPM.cmake")
 
+find_package(Vulkan REQUIRED)
+
 CPMAddPackage(
     NAME            glfw
     GIT_REPOSITORY  https://github.com/glfw/glfw

@@ -1,5 +1,6 @@
 #include "cvox/core/engine.hpp"
 #include "cvox/io/window_context.hpp"
+#include "cvox/rendering/vulkan_context.hpp"
 
 namespace cvox
 {
@@ -9,6 +10,7 @@ Engine::init(std::unique_ptr<Application> application)
     m_application = std::move(application);
 
     register_context<WindowContext>();
+    register_context<VulkanContext>();
 
     m_application->on_init();
 }

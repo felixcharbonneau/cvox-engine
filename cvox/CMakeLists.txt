@@ -8,6 +8,8 @@ add_library(cvox_engine
 add_library(cvox::engine ALIAS cvox_engine)
 target_link_libraries(
     cvox_engine 
+
+    Vulkan::Vulkan
     EnTT::EnTT 
     glfw
 )
