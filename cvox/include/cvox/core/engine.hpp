@@ -3,6 +3,7 @@
 #include "context.hpp"
 #include "cvox/core.h"
 #include <cassert>
+#include <entt/entt.hpp>
 #include <memory>
 #include <vector>
 
@@ -22,13 +23,19 @@ public:
 
     void run();
 
+    inline entt::registry&
+    registry() noexcept
+    {
+        return m_registry;
+    }
     template<std::derived_from<Context> T, typename... Args> void register_context(Args&&... args);
     template<std::derived_from<Context> T> [[nodiscard]] T* get_context();
 
 private:
     void deinit();
-    std::unique_ptr<Application> m_application;
 
+    entt::registry m_registry;
+    std::unique_ptr<Application> m_application;
     std::vector<std::unique_ptr<Context>> m_contexts;
     bool m_running = false;
 };
@@ -45,6 +52,7 @@ Engine::register_context(Args&&... args)
     std::unique_ptr<Context> ptr = std::make_unique<T>(*this, std::forward<Args>(args)...);
 
     ptr->on_init();
+    ptr->m_entity = m_registry.create();
     m_contexts[id] = std::move(ptr);
 }
 

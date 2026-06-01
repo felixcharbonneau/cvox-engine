@@ -2,6 +2,7 @@
 #include "cvox/core.h"
 #include <concepts>
 #include <cstddef>
+#include <entt/entt.hpp>
 
 namespace cvox
 {
@@ -31,6 +32,7 @@ private:
         return counter++;
     }
 
+    entt::entity m_entity;
     Engine& m_engine;
 };
 }; // namespace cvox
