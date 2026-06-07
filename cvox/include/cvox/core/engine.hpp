@@ -23,7 +23,7 @@ public:
 
     void run();
 
-    inline entt::registry&
+    [[nodiscard]] inline entt::registry&
     registry() noexcept
     {
         return m_registry;
@@ -51,9 +51,9 @@ Engine::register_context(Args&&... args)
     }
     std::unique_ptr<Context> ptr = std::make_unique<T>(*this, std::forward<Args>(args)...);
 
-    ptr->on_init();
     ptr->m_entity = m_registry.create();
     m_contexts[id] = std::move(ptr);
+    m_contexts[id]->on_init();
 }
 
 template<std::derived_from<Context> T>

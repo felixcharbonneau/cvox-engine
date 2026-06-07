@@ -13,7 +13,7 @@ public:
     Application() = default;
 
     /// Getters
-    Engine&
+    [[nodiscard]] Engine&
     engine()
     {
         return *m_engine;

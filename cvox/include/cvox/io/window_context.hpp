@@ -17,6 +17,14 @@ public:
 
     void poll_events();
 
+    [[nodiscard]] GLFWwindow*
+    get_glfw_window() noexcept
+    {
+        return m_window;
+    };
+
+    void get_framebuffer_size(int* width, int* height) const noexcept;
+
 private:
     GLFWwindow* m_window;
 
